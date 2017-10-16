@@ -6,6 +6,7 @@ resource "aws_vpc" "vpc" {
 
   tags {
     Name = "${var.name}"
+    CodeVersion = "${var.code_version}"
   }
 }
 
@@ -14,6 +15,7 @@ resource "aws_internet_gateway" "igw" {
 
   tags {
     Name = "${var.name} IGW"
+    CodeVersion = "${var.code_version}"
   }
 }
 
@@ -30,6 +32,7 @@ resource "aws_subnet" "pub" {
 
   tags {
     Name = "pub-${data.aws_availability_zones.available.names[count.index]}-${var.name}"
+    CodeVersion = "${var.code_version}"
   }
 }
 
@@ -43,6 +46,7 @@ resource "aws_route_table" "public" {
 
   tags {
     Name = "public-rt-${var.name}"
+    CodeVersion = "${var.code_version}"
   }
 }
 
@@ -64,6 +68,7 @@ resource "aws_subnet" "prv" {
 
   tags {
     Name = "prv-${data.aws_availability_zones.available.names[count.index]}-${var.name}"
+    CodeVersion = "${var.code_version}"
   }
 }
 
@@ -85,6 +90,7 @@ resource "aws_route_table" "private" {
 
   tags {
     Name = "private-rt-${var.name}"
+    CodeVersion = "${var.code_version}"
   }
 }
 
